@@ -1,14 +1,5 @@
----
-languages:
-- csharp
-products:
-- dotnet
-- dotnet-orleans
-page_type: sample
-name: "Orleans Text Adventure Game"
-urlFragment: "orleans-text-adventure-game"
-description: "An example of a text adventure game written in C# using Orleans."
----
+# Orleans 7 External Client Test With `TestCluster` Demo
+This is adapted from Microsoft's [Adventure game](https://learn.microsoft.com/en-us/dotnet/orleans/tutorials-and-samples/adventure) code sample to showcase that an external client no longer works with `TestCluster` in Orleans 7 (which was working in Orleans 3.x). Running `UnitTest1` will failed with `Orleans.Runtime.Messaging.ConnectionFailedException: Unable to connect to any of the 1 available gateways`, even though seemingly all the port and IDs are configured correctly
 
 # Orleans Text Adventure Game
 
@@ -52,7 +43,7 @@ To download and run the sample, follow these steps:
 To run the game, run the server by executing the following at the command prompt (opened to the base directory of the sample):
 
 ``` bash
-dotnet run --project AdventureServer
+dotnet run --project src/AdventureServer
 ```
 
 You should see the server startup and eventually print the line `Press any key to exit`.
@@ -60,5 +51,5 @@ You should see the server startup and eventually print the line `Press any key t
 In a separate terminal, execute the following to start the client and play the game:
 
 ``` bash
-dotnet run --project AdventureClient
+dotnet run --project src/AdventureClient
 ```
