@@ -12,6 +12,17 @@ public class OrleansClusterFixture : IDisposable
     {
         var builder = new TestClusterBuilder(2);
         builder.Options.BaseSiloPort = new Random().Next(1025, ushort.MaxValue);
+
+        // uses the same port/ids as the default LocalhostClustering
+        // public static IClientBuilder UseLocalhostClustering(
+        //     this IClientBuilder builder,
+        //     int gatewayPort = 30000,
+        //     string serviceId = ClusterOptions.DevelopmentServiceId,
+        //     string clusterId = ClusterOptions.DevelopmentClusterId)
+        builder.Options.BaseGatewayPort = 30000;
+        builder.Options.ServiceId = "dev";
+        builder.Options.ClusterId = "dev";
+
         Cluster = builder.Build();
         Cluster.Deploy();
     }
